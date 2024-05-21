@@ -1,7 +1,7 @@
 import { User, Post as TPost, UserRole } from '@prisma/client'
 import { DeletePost } from './delete-post'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../lib/auth'
 
 type Props = { authorName: User['name'] } & TPost
 

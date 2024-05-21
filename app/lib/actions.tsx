@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import prisma from './prisma'
 import { Post } from '@prisma/client'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from './auth'
 
 export type State = {
   errors?: {

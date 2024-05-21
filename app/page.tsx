@@ -2,8 +2,8 @@ import prisma from '@/app/lib/prisma'
 import { Post } from './components/post'
 import Link from 'next/link'
 import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
 import { LoginButton, LogoutButton } from './components/auth'
+import { authOptions } from './lib/auth'
 
 const getPosts = async () => {
   const posts = await prisma.post.findMany({
