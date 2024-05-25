@@ -46,16 +46,43 @@ export async function addPost(formData: FormData) {
   redirect('/')
 }
 
-export async function deletePost(id: Post['id']) {
+export async function deletePost(postId: Post['id']) {
   try {
     const result = await prisma.post.delete({
       where: {
-        id,
+        id: postId,
       },
     })
   } catch (error) {
     return {
       message: 'Database Error: Failed to Delete Post.',
+    }
+  }
+
+  revalidatePath('/')
+}
+
+export async function likePost(postId: Post['id']) {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    return
+  }
+
+  try {
+    const result = await prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        likedBy: {
+          connect: { id: session.user.id },
+        },
+      },
+    })
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Update Post.',
     }
   }
 

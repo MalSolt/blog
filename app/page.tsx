@@ -10,7 +10,10 @@ const getPosts = async () => {
     where: { published: true },
     include: {
       author: {
-        select: { name: true },
+        select: { name: true, email: true },
+      },
+      likedBy: {
+        select: { name: true, email: true },
       },
     },
   })
@@ -29,7 +32,7 @@ export default async function Home() {
       <Link href='/add-post'>Add Post</Link>
       <h1>Feed</h1>
       {posts.map((post) => (
-        <Post key={post.id} authorName={post.author.name} {...post} />
+        <Post key={post.id} {...post} />
       ))}
     </main>
   )

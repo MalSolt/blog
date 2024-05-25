@@ -17,6 +17,7 @@ model Post {
   published Boolean @default(false)
   author    User   @relation(fields: [authorId], references: [id])
   authorId  String
+  likedBy User[]  @relation("LikedPosts")
 }
 
 enum UserRole {
@@ -33,5 +34,6 @@ model User {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   posts         Post[]
+  likedPosts Post[] @relation("LikedPosts")
   @@map(name: "users")
 }
