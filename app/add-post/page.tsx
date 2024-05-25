@@ -13,17 +13,27 @@ export default function AddPost() {
 
   return (
     <main>
-      <h1>Add Post</h1>
-      <form action={addPost}>
-        <div>
+      <h1 className='text-4xl text-emerald-700' >Add Post</h1>
+      <form action={addPost} className='flex flex-col gap-4 mt-4'>
+        <div className='flex flex-col'>
           <label htmlFor='title'>Title:</label>
-          <input type='text' id='title' name='title' className='text-slate-950' />
+          <input
+            type='text'
+            id='title'
+            name='title'
+            className='text-slate-950 rounded border-2 border-inherit w-1/2'
+          />
         </div>
-        <div>
+        <div className='flex flex-col'>
           <label htmlFor='content'>Content:</label>
-          <input type='text' id='content' name='content' className='text-slate-950' />
+          <input
+            type='text'
+            id='content'
+            name='content'
+            className='text-slate-950 rounded border-2 border-inherit w-1/2'
+          />
         </div>
-        <button type='submit'>Submit</button>
+        <button type='submit' className='rounded w-20 bg-emerald-700'>Submit</button>
       </form>
     </main>
   )
