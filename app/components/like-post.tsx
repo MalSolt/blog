@@ -1,6 +1,8 @@
 'use client'
 import { Post } from '@prisma/client'
 import { likePost } from '@/app/lib/actions'
+import { FcLike } from 'react-icons/fc'
+import { FcLikePlaceholder } from 'react-icons/fc'
 
 type Props = {
   id: Post['id']
@@ -10,9 +12,7 @@ type Props = {
 export const LikePost = ({ id, isLikedByMe }: Props) => {
   const handleLikePost = () => likePost(id)
 
-  return (
-    <button className={isLikedByMe ? 'bg-red-600' : ''} onClick={handleLikePost}>
-      Like Post
-    </button>
-  )
+  const Icon = isLikedByMe ? FcLike : FcLikePlaceholder
+
+  return <Icon className='cursor-pointer hover:scale-125 duration-300' onClick={handleLikePost} />
 }
