@@ -15,21 +15,19 @@ export const Post = async ({
   likedBy,
 }: PostWithLikesAndAuthor) => {
   const session = await getServerSession(authOptions)
-  const userRole = session?.user.role
-  const userId = session?.user.id
-  const userEmail = session?.user.email
+  const isLikedByMe = likedBy.some((e) => e.email === session?.user.email)
+  const canDelete = session?.user.id === authorId || session?.user.role === 'ADMIN'
   const likesNumber = likedBy.length
-  const isLikedByMe = likedBy.some((e) => e.email === userEmail)
 
   return (
     <div className='rounded border-2 p-4 border-inherit w-1/2'>
       <h3>{author.name}</h3>
       <h4>{title}</h4>
       <p>{content}</p>
-      {(userId === authorId || userRole === 'ADMIN') && <DeletePost id={id} />}
+      {canDelete && <DeletePost id={id} />}
       <br />
       <LikePost isLikedByMe={isLikedByMe} id={id} />
-      {likesNumber}
+      {likedBy.length}
     </div>
   )
 }
