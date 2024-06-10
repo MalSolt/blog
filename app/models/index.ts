@@ -1,11 +1,12 @@
-import { Post, User } from '@prisma/client'
+import { Comment, Post, User } from '@prisma/client'
 
-export type PostWithLikesAndAuthor = {
+export type PostWithRelatedData = {
   likedBy: Pick<User, 'name' | 'email'>[]
   author: {
     name: User['name']
     email: User['email']
   }
+  comments: Comment[]
 } & Post
 
 export interface UserWithLikedPosts extends User {

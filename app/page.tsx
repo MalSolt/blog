@@ -15,6 +15,7 @@ const getPosts = async () => {
       likedBy: {
         select: { name: true, email: true },
       },
+      comments: true,
     },
   })
 

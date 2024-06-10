@@ -88,3 +88,34 @@ export async function likePost(postId: Post['id']) {
 
   revalidatePath('/')
 }
+
+export async function addComment(formData: FormData) {
+  const session = await getServerSession(authOptions)
+  
+  if (!session) {
+    return
+  }
+
+  try {
+    const text = formData.get('text') as string
+    const postId = formData.get('postId') as string
+
+    const result = await prisma.comment.create({
+      data: {
+        text,
+        author: {
+          connect: { id: session.user.id },
+        },
+        post: {
+          connect: { id: postId },
+        },
+      },
+    })
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Create Commnet.',
+    }
+  }
+
+  revalidatePath('/')
+}
