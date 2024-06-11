@@ -1,5 +1,5 @@
 import prisma from '@/app/lib/prisma'
-import { Post } from './components/post'
+import { Post } from './components/post/post'
 import Link from 'next/link'
 import { getServerSession } from 'next-auth'
 import { LoginButton, LogoutButton } from './components/auth'

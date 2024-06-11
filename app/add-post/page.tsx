@@ -13,7 +13,7 @@ export default function AddPost() {
 
   return (
     <main>
-      <h1 className='text-4xl text-emerald-700' >Add Post</h1>
+      <h1 className='text-4xl text-primary' >Add Post</h1>
       <form action={addPost} className='flex flex-col gap-4 mt-4'>
         <div className='flex flex-col'>
           <label htmlFor='title'>Title:</label>
@@ -33,7 +33,7 @@ export default function AddPost() {
             className='text-slate-950 rounded border-2 border-inherit w-1/2'
           />
         </div>
-        <button type='submit' className='rounded w-20 bg-emerald-700'>Submit</button>
+        <button type='submit' className='rounded w-20 bg-primary'>Submit</button>
       </form>
     </main>
   )

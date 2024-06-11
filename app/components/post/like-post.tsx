@@ -7,12 +7,21 @@ import { FcLikePlaceholder } from 'react-icons/fc'
 type Props = {
   id: Post['id']
   isLikedByMe: boolean
+  likesNumber: number
 }
 
-export const LikePost = ({ id, isLikedByMe }: Props) => {
+export const LikePost = ({ id, isLikedByMe, likesNumber }: Props) => {
   const handleLikePost = () => likePost(id)
 
   const Icon = isLikedByMe ? FcLike : FcLikePlaceholder
 
-  return <Icon className='cursor-pointer hover:scale-125 duration-300' onClick={handleLikePost} />
+  return (
+    <div>
+      <Icon
+        className='cursor-pointer hover:scale-125 duration-300 relative'
+        onClick={handleLikePost}
+      />
+      {likesNumber}
+    </div>
+  )
 }
