@@ -3,9 +3,9 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import prisma from './prisma'
-import { Post } from '@prisma/client'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './auth'
+import { TPost } from '../models'
 
 export type State = {
   errors?: {
@@ -46,7 +46,7 @@ export async function addPost(formData: FormData) {
   redirect('/')
 }
 
-export async function deletePost(postId: Post['id']) {
+export async function deletePost(postId: TPost['id']) {
   try {
     const result = await prisma.post.delete({
       where: {
@@ -62,7 +62,7 @@ export async function deletePost(postId: Post['id']) {
   revalidatePath('/')
 }
 
-export async function likePost(postId: Post['id']) {
+export async function likePost(postId: TPost['id']) {
   const session = await getServerSession(authOptions)
 
   if (!session) {
@@ -89,16 +89,15 @@ export async function likePost(postId: Post['id']) {
   revalidatePath('/')
 }
 
-export async function addComment(formData: FormData) {
+export async function addComment(formData: FormData, postId: TPost['id']) {
   const session = await getServerSession(authOptions)
-  
+
   if (!session) {
     return
   }
 
   try {
     const text = formData.get('text') as string
-    const postId = formData.get('postId') as string
 
     const result = await prisma.comment.create({
       data: {

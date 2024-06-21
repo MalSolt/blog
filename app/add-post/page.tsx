@@ -5,7 +5,7 @@ import { addPost } from '@/app/lib/actions'
 import { useSession } from 'next-auth/react'
 
 export default function AddPost() {
-  const { data: session } = useSession()
+  const { data: session } = useSession()  
   const initialState = { message: null, errors: {} }
   console.log({ session })
 

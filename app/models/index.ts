@@ -1,6 +1,6 @@
 import { Comment, Post, User } from '@prisma/client'
 
-export type PostWithRelatedData = {
+export type TPost = {
   likedBy: Pick<User, 'name' | 'email'>[]
   author: {
     name: User['name']
@@ -9,6 +9,6 @@ export type PostWithRelatedData = {
   comments: Comment[]
 } & Post
 
-export interface UserWithLikedPosts extends User {
+export interface TUser extends User {
   likedPosts: Post[]
 }

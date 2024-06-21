@@ -1,11 +1,11 @@
 'use client'
-import { Post } from '@prisma/client'
 import { likePost } from '@/app/lib/actions'
+import { TPost } from '@/app/models'
 import { FcLike } from 'react-icons/fc'
 import { FcLikePlaceholder } from 'react-icons/fc'
 
 type Props = {
-  id: Post['id']
+  id: TPost['id']
   isLikedByMe: boolean
   likesNumber: number
 }

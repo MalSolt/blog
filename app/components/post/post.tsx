@@ -3,10 +3,11 @@ import { DeletePost } from './delete-post'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../../lib/auth'
 import { LikePost } from './like-post'
-import { PostWithRelatedData } from '@/app/models'
+import { TPost } from '@/app/models'
 import { Content } from './content'
 import { Title } from './title'
 import { Comments } from './comments'
+import { AddComment } from './add-comment'
 
 export const Post = async ({
   id,
@@ -16,7 +17,7 @@ export const Post = async ({
   authorId,
   likedBy,
   comments,
-}: PostWithRelatedData) => {
+}: TPost) => {
   const session = await getServerSession(authOptions)
   const isLikedByMe = likedBy.some((e) => e.email === session?.user.email)
   const isMyPost = session?.user.id === authorId
@@ -27,8 +28,8 @@ export const Post = async ({
     <div className='rounded border-2 border-inherit w-1/2'>
       <Title text={title} />
       <Content text={content} />
-      <Comments comments={comments} postId={id} />
-
+      <Comments comments={comments} />
+      <AddComment postId={id} />
       <div className='controllers flex px-4 py-2 gap-2'>
         <LikePost isLikedByMe={isLikedByMe} id={id} likesNumber={likedBy.length} />
         {canDelete && <DeletePost id={id} />}

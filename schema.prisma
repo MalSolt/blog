@@ -10,17 +10,6 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model Post {
-  id        String     @default(cuid()) @id
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User   @relation(fields: [authorId], references: [id])
-  authorId  String
-  comments  Comment[]
-  likedBy User[]  @relation("LikedPosts")
-}
-
 enum UserRole {
   ADMIN
   USER
@@ -40,12 +29,23 @@ model User {
   @@map(name: "users")
 }
 
+model Post {
+  id        String     @default(cuid()) @id
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User   @relation(fields: [authorId], references: [id])
+  authorId  String
+  comments  Comment[]
+  likedBy User[]  @relation("LikedPosts")
+}
+
 model Comment {
   id        Int       @id @default(autoincrement())
   text      String
   createdAt DateTime  @default(now())
   postId    String
-  post      Post      @relation(fields: [postId], references  : [id])
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
   authorId  String
   author    User      @relation(fields: [authorId], references: [id])
 }

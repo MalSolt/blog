@@ -1,7 +1,7 @@
-import { Post } from '@prisma/client'
+import { TPost } from "@/app/models"
 
 type Props = {
-  text: Post['title']
+  text: TPost['title']
 }
 
 export const Title = ({ text }: Props) => {

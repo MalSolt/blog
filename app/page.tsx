@@ -1,8 +1,8 @@
 import prisma from '@/app/lib/prisma'
-import { Post } from './components/post/post'
-import Link from 'next/link'
 import { getServerSession } from 'next-auth'
-import { LoginButton, LogoutButton } from './components/auth'
+import Link from 'next/link'
+import { LogoutButton } from './components/auth'
+import { Post } from './components/post/post'
 import { authOptions } from './lib/auth'
 
 const getPosts = async () => {
@@ -27,11 +27,11 @@ export default async function Home() {
   const posts = await getPosts()
 
   return (
-    <main className='pt-10 flex flex-col items-center gap-16'>
-      <LoginButton />
-      <LogoutButton />
-      <Link href='/add-post'>Add Post</Link>
-      <h1>Feed</h1>
+    <main className='pt-10 flex flex-col items-center gap-10'>
+      <div className='w-full flex gap-4 justify-end'>
+        <LogoutButton />
+        <Link href='/add-post'>Add Post</Link>
+      </div>
       {posts.map((post) => (
         <Post key={post.id} {...post} />
       ))}
