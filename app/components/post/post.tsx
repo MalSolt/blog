@@ -6,8 +6,8 @@ import { LikePost } from './like-post'
 import { TPost } from '@/app/models'
 import { Content } from './content'
 import { Title } from './title'
-import { Comments } from './comments'
-import { AddComment } from './add-comment'
+import { Comments } from '../commnet/comments'
+import { AddComment } from '../commnet/add-comment'
 
 export const Post = async ({
   id,

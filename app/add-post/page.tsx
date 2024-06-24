@@ -3,17 +3,14 @@
 import { useFormState } from 'react-dom'
 import { addPost } from '@/app/lib/actions'
 import { useSession } from 'next-auth/react'
+import { StatusButton } from '../components/button/status-button'
 
 export default function AddPost() {
-  const { data: session } = useSession()  
-  const initialState = { message: null, errors: {} }
-  console.log({ session })
-
-  // const [state, dispatch] = useFormState(addPost, initialState);
+  const { data: session } = useSession()
 
   return (
     <main>
-      <h1 className='text-4xl text-primary' >Add Post</h1>
+      <h1 className='text-4xl text-primary'>Add Post</h1>
       <form action={addPost} className='flex flex-col gap-4 mt-4'>
         <div className='flex flex-col'>
           <label htmlFor='title'>Title:</label>
@@ -33,7 +30,7 @@ export default function AddPost() {
             className='text-slate-950 rounded border-2 border-inherit w-1/2'
           />
         </div>
-        <button type='submit' className='rounded w-20 bg-primary'>Submit</button>
+        <StatusButton>Submit</StatusButton>
       </form>
     </main>
   )

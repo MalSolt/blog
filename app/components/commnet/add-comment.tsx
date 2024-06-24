@@ -3,7 +3,7 @@
 import { TPost } from '@/app/models'
 import { useRef } from 'react'
 import { addComment } from '../../lib/actions'
-import { AddCommentButton } from './add-comment-button'
+import { StatusButton } from '../button/status-button'
 
 type Props = {
   postId: TPost['id']
@@ -29,7 +29,7 @@ export const AddComment = ({ postId }: Props) => {
         name='text'
         className='text-slate-950 rounded border-2 border-inherit w-full px-2'
       />
-      <AddCommentButton />
+      <StatusButton>Submit</StatusButton>
     </form>
   )
 }
