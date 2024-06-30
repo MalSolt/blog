@@ -29,6 +29,9 @@ export default async function Home() {
   return (
     <main className='pt-10 flex flex-col items-center gap-10'>
       <div className='w-full flex gap-4 justify-end'>
+        <span>{session?.user.email}</span>
+        <span>{session?.user.name}</span>
+        <span> {session?.user.role}</span>
         <LogoutButton />
         <Link href='/add-post'>Add Post</Link>
       </div>

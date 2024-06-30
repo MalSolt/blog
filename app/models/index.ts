@@ -9,6 +9,8 @@ export type TPost = {
   comments: Comment[]
 } & Post
 
-export interface TUser extends User {
+export type TUser = {
   likedPosts: Post[]
-}
+} & User
+
+export type TComment = Comment
