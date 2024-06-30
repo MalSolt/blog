@@ -1,8 +1,8 @@
 'use client'
 
-import { deletePost } from '@/app/lib/actions'
-import { TPost } from '@/app/models'
-import { StatusButton } from '../button/status-button'
+import { TPost } from '@/models'
+import { StatusButton } from '../ui/button/status-button'
+import { deletePost } from '@/lib/actions'
 
 type Props = {
   id: TPost['id']

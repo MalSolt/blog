@@ -1,4 +1,4 @@
-import { TPost } from "@/app/models"
+import { TPost } from '@/models'
 
 type Props = {
   text: TPost['title']

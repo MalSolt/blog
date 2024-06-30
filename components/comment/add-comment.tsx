@@ -1,9 +1,9 @@
 'use client'
 
-import { TPost } from '@/app/models'
+import { TPost } from '@/models'
 import { useRef } from 'react'
-import { addComment } from '../../lib/actions'
-import { StatusButton } from '../button/status-button'
+import { StatusButton } from '../ui/button/status-button'
+import { addComment } from '@/lib/actions'
 
 type Props = {
   postId: TPost['id']
@@ -27,7 +27,7 @@ export const AddComment = ({ postId }: Props) => {
         rows={3}
         id='text'
         name='text'
-        className='text-slate-950 rounded border-2 border-inherit w-full px-2'
+        className='rounded border-2 border-inherit w-full px-2'
       />
       <StatusButton>Submit</StatusButton>
     </form>

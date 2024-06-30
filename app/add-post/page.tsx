@@ -1,9 +1,9 @@
 'use client'
 
 import { useFormState } from 'react-dom'
-import { addPost } from '@/app/lib/actions'
 import { useSession } from 'next-auth/react'
-import { StatusButton } from '../components/button/status-button'
+import { StatusButton } from '../../components/ui/button/status-button'
+import { addPost } from '@/lib/actions'
 
 export default function AddPost() {
   const { data: session } = useSession()
@@ -18,7 +18,7 @@ export default function AddPost() {
             type='text'
             id='title'
             name='title'
-            className='text-slate-950 rounded border-2 border-inherit w-1/2'
+            className='rounded border-2 border-inherit w-1/2'
           />
         </div>
         <div className='flex flex-col'>
@@ -27,7 +27,7 @@ export default function AddPost() {
             type='text'
             id='content'
             name='content'
-            className='text-slate-950 rounded border-2 border-inherit w-1/2'
+            className='rounded border-2 border-inherit w-1/2'
           />
         </div>
         <StatusButton>Submit</StatusButton>

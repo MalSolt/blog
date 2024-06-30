@@ -1,6 +1,6 @@
 'use client'
-import { likePost } from '@/app/lib/actions'
-import { TPost } from '@/app/models'
+import { TPost } from '@/models'
+import { likePost } from '@/lib/actions'
 import { FcLike } from 'react-icons/fc'
 import { FcLikePlaceholder } from 'react-icons/fc'
 

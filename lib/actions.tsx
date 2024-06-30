@@ -2,10 +2,10 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import prisma from './prisma'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './auth'
-import { TPost } from '../models'
+import prisma from './prisma'
+import { TPost } from '@/models'
 
 export type State = {
   errors?: {

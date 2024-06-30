@@ -1,23 +1,14 @@
 import { UserRole } from '@prisma/client'
 import { DeletePost } from './delete-post'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../../lib/auth'
 import { LikePost } from './like-post'
-import { TPost } from '@/app/models'
+import { TPost } from '@/models'
 import { Content } from './content'
 import { Title } from './title'
+import { authOptions } from '@/lib/auth'
 import { Comments } from '../comment/comments'
 import { AddComment } from '../comment/add-comment'
-
-export const Post = async ({
-  id,
-  title,
-  content,
-  author,
-  authorId,
-  likedBy,
-  comments,
-}: TPost) => {
+export const Post = async ({ id, title, content, author, authorId, likedBy, comments }: TPost) => {
   const session = await getServerSession(authOptions)
   const isLikedByMe = likedBy.some((e) => e.email === session?.user.email)
   const isMyPost = session?.user.id === authorId

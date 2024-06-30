@@ -1,5 +1,5 @@
-import { authOptions } from '@/app/lib/auth'
-import { TComment } from '@/app/models'
+import { authOptions } from '@/lib/auth'
+import { TComment } from '@/models'
 import clsx from 'clsx'
 import { getServerSession } from 'next-auth'
 import { Comment } from './comment'
