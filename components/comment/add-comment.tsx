@@ -4,6 +4,7 @@ import { TPost } from '@/models'
 import { useRef } from 'react'
 import { StatusButton } from '../ui/button/status-button'
 import { addComment } from '@/lib/actions'
+import { Textarea } from '../ui/form/textarea'
 
 type Props = {
   postId: TPost['id']
@@ -22,13 +23,7 @@ export const AddComment = ({ postId }: Props) => {
 
   return (
     <form ref={ref} action={handleAddComment}>
-      <textarea
-        placeholder='enter your message here'
-        rows={3}
-        id='text'
-        name='text'
-        className='rounded border-2 border-inherit w-full px-2'
-      />
+      <Textarea placeholder='enter your message here' id='text' name='text' />
       <StatusButton>Submit</StatusButton>
     </form>
   )
