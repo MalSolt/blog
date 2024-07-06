@@ -3,7 +3,7 @@
 import { TPost } from '@/models'
 import { useRef } from 'react'
 import { StatusButton } from '../ui/button/status-button'
-import { addComment } from '@/lib/actions'
+import { addComment } from '@/lib/actions/comment'
 import { Textarea } from '../ui/form/textarea'
 
 type Props = {

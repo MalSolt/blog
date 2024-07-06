@@ -2,7 +2,7 @@
 
 import { TPost } from '@/models'
 import { StatusButton } from '../ui/button/status-button'
-import { deletePost } from '@/lib/actions'
+import { deletePost } from '@/lib/actions/post'
 
 type Props = {
   id: TPost['id']

@@ -6,11 +6,13 @@ export type TPost = {
     name: User['name']
     email: User['email']
   }
-  comments: Comment[]
+  comments: TComment[]
 } & Post
 
 export type TUser = {
   likedPosts: Post[]
 } & User
 
-export type TComment = Comment
+export type TComment = {
+  likedBy: Pick<User, 'name' | 'email'>[]
+} & Comment

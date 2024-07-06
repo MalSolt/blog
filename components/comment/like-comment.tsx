@@ -1,17 +1,17 @@
 'use client'
-import { TPost } from '@/models'
-import { likePost } from '@/lib/actions/post'
+import { TComment } from '@/models'
+import { likeComment } from '@/lib/actions/comment'
 import { FcLike } from 'react-icons/fc'
 import { FcLikePlaceholder } from 'react-icons/fc'
 
 type Props = {
-  id: TPost['id']
+  id: TComment['id']
   isLikedByMe: boolean
   likesNumber: number
 }
 
-export const LikePost = ({ id, isLikedByMe, likesNumber }: Props) => {
-  const handleLikePost = () => likePost(id)
+export const LikeComment = ({ id, isLikedByMe, likesNumber }: Props) => {
+  const handleLikeComment = () => likeComment(id)
 
   const Icon = isLikedByMe ? FcLike : FcLikePlaceholder
 
@@ -19,7 +19,7 @@ export const LikePost = ({ id, isLikedByMe, likesNumber }: Props) => {
     <div>
       <Icon
         className='cursor-pointer hover:scale-125 duration-300 relative'
-        onClick={handleLikePost}
+        onClick={handleLikeComment}
       />
       {likesNumber}
     </div>

@@ -3,7 +3,7 @@
 import { useFormState } from 'react-dom'
 import { useSession } from 'next-auth/react'
 import { StatusButton } from '../../components/ui/button/status-button'
-import { addPost } from '@/lib/actions'
+import { addPost } from '@/lib/actions/post'
 import { Label } from '@/components/ui/form/label'
 import { InputWithLabel } from '@/components/ui/form/input-with-label'
 import { Input } from '@/components/ui/form/input'

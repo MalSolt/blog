@@ -1,19 +1,11 @@
 'use server'
 
+import { TPost } from '@/models'
+import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
-import { authOptions } from './auth'
-import prisma from './prisma'
-import { TPost } from '@/models'
-
-export type State = {
-  errors?: {
-    title?: string[]
-    content?: string[]
-  }
-  message?: string | null
-}
+import { authOptions } from '../auth'
+import prisma from '../prisma'
 
 export async function addPost(formData: FormData) {
   const session = await getServerSession(authOptions)
@@ -83,36 +75,6 @@ export async function likePost(postId: TPost['id']) {
   } catch (error) {
     return {
       message: 'Database Error: Failed to Update Post.',
-    }
-  }
-
-  revalidatePath('/')
-}
-
-export async function addComment(formData: FormData, postId: TPost['id']) {
-  const session = await getServerSession(authOptions)
-
-  if (!session) {
-    return
-  }
-
-  try {
-    const text = formData.get('text') as string
-
-    const result = await prisma.comment.create({
-      data: {
-        text,
-        author: {
-          connect: { id: session.user.id },
-        },
-        post: {
-          connect: { id: postId },
-        },
-      },
-    })
-  } catch (error) {
-    return {
-      message: 'Database Error: Failed to Create Commnet.',
     }
   }
 
